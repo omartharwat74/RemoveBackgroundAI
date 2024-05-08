@@ -96,7 +96,7 @@
                         <constraint firstItem="9E9-f1-1a3" firstAttribute="width" secondItem="b59-Xg-bOS" secondAttribute="width" id="nBu-DC-bLF"/>
                     </constraints>
                 </scrollView>
-                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="heA-EU-RFf">
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="heA-EU-RFf">
                     <rect key="frame" x="0.0" y="727" width="393" height="91"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5eI-4Y-QlR">
@@ -107,13 +107,13 @@
                             </constraints>
                         </view>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMx-Xh-c2i">
-                            <rect key="frame" x="0.0" y="1" width="393" height="90"/>
+                            <rect key="frame" x="0.0" y="17" width="393" height="74"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" alignment="center" spacing="14" translatesAutoresizingMaskIntoConstraints="NO" id="EiD-cT-qYd">
-                                    <rect key="frame" x="16" y="0.0" width="361" height="90"/>
+                                    <rect key="frame" x="16" y="0.0" width="361" height="58"/>
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwP-RU-ltD">
-                                            <rect key="frame" x="0.0" y="20" width="173.66666666666666" height="50"/>
+                                            <rect key="frame" x="0.0" y="4" width="173.66666666666666" height="50"/>
                                             <color key="backgroundColor" red="0.20784313725490194" green="0.2196078431372549" blue="0.24705882352941178" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="6Fp-Bi-tFl"/>
@@ -126,7 +126,7 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gbi-hP-D3Z">
-                                            <rect key="frame" x="187.66666666666663" y="20" width="173.33333333333337" height="50"/>
+                                            <rect key="frame" x="187.66666666666663" y="4" width="173.33333333333337" height="50"/>
                                             <color key="backgroundColor" red="0.3411764706" green="0.58431372550000005" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="jfd-ZH-jF4"/>
@@ -144,7 +144,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="EiD-cT-qYd" secondAttribute="bottom" id="Rhj-dB-ClE"/>
+                                <constraint firstAttribute="bottom" secondItem="EiD-cT-qYd" secondAttribute="bottom" constant="16" id="Rhj-dB-ClE"/>
                                 <constraint firstItem="EiD-cT-qYd" firstAttribute="leading" secondItem="uMx-Xh-c2i" secondAttribute="leading" constant="16" id="W0a-cV-Ofx"/>
                                 <constraint firstAttribute="trailing" secondItem="EiD-cT-qYd" secondAttribute="trailing" constant="16" id="fJc-yh-nG0"/>
                                 <constraint firstItem="EiD-cT-qYd" firstAttribute="top" secondItem="uMx-Xh-c2i" secondAttribute="top" id="g7Q-3q-XSY"/>
