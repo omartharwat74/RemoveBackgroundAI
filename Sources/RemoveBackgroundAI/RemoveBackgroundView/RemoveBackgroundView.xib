@@ -106,6 +106,9 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUe-fI-YpU">
                                             <rect key="frame" x="0.0" y="114" width="361" height="400"/>
                                             <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="axy-2O-s8I">
+                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="400"/>
+                                                </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-WK-g42">
                                                     <rect key="frame" x="309" y="12" width="40" height="40"/>
                                                     <constraints>
@@ -118,9 +121,6 @@
                                                         <action selector="removeImageClick:" destination="-1" eventType="touchUpInside" id="IsQ-xi-ADF"/>
                                                     </connections>
                                                 </button>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="axy-2O-s8I">
-                                                    <rect key="frame" x="0.0" y="0.0" width="361" height="400"/>
-                                                </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZKA-ce-OOM">
                                                     <rect key="frame" x="103.00000000000001" y="162" width="155.33333333333337" height="76"/>
                                                     <subviews>
@@ -148,14 +148,14 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.20784313725490194" green="0.2196078431372549" blue="0.24705882352941178" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="aPg-WK-g42" firstAttribute="top" secondItem="aUe-fI-YpU" secondAttribute="top" constant="12" id="2D9-ii-Mhf"/>
                                                 <constraint firstAttribute="bottom" secondItem="axy-2O-s8I" secondAttribute="bottom" id="Jwk-K5-ume"/>
                                                 <constraint firstAttribute="trailing" secondItem="axy-2O-s8I" secondAttribute="trailing" id="LlT-KI-qau"/>
+                                                <constraint firstItem="aPg-WK-g42" firstAttribute="top" secondItem="axy-2O-s8I" secondAttribute="top" constant="12" id="Mcw-Ca-F41"/>
                                                 <constraint firstAttribute="height" constant="400" id="eaf-rW-YEf"/>
                                                 <constraint firstItem="ZKA-ce-OOM" firstAttribute="centerX" secondItem="aUe-fI-YpU" secondAttribute="centerX" id="foJ-xj-u9d"/>
+                                                <constraint firstItem="aPg-WK-g42" firstAttribute="trailing" secondItem="axy-2O-s8I" secondAttribute="trailing" constant="-12" id="g5e-Sy-Ftd"/>
                                                 <constraint firstItem="axy-2O-s8I" firstAttribute="top" secondItem="aUe-fI-YpU" secondAttribute="top" id="gjE-pK-ddo"/>
                                                 <constraint firstItem="axy-2O-s8I" firstAttribute="leading" secondItem="aUe-fI-YpU" secondAttribute="leading" id="p0P-jQ-THj"/>
-                                                <constraint firstAttribute="trailing" secondItem="aPg-WK-g42" secondAttribute="trailing" constant="12" id="wqW-ep-whf"/>
                                                 <constraint firstItem="ZKA-ce-OOM" firstAttribute="centerY" secondItem="aUe-fI-YpU" secondAttribute="centerY" id="xxv-zI-9Pt"/>
                                             </constraints>
                                         </view>

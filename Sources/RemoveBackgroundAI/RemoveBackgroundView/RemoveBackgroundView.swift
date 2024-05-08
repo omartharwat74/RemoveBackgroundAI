@@ -105,6 +105,11 @@ class RemoveBackgroundView: UIView {
         viewImage.isUserInteractionEnabled = true
         setUpButton()
         removeImageButton.isHidden = true
+        if mainImage.image == nil {
+            removeImageButton.isHidden = true
+        }else {
+            removeImageButton.isHidden = false
+        }
     }
     
     func setUpButton(){
