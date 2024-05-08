@@ -128,7 +128,12 @@ class RemoveBackgroundView: UIView {
         removeBackGroundButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
     }
     @IBAction func removeBackGroundClick(_ sender: Any) {
-        
+        if let parentVC = self.parentViewController {
+            let vc = ImageResultVC()
+            vc.modalPresentationStyle = .fullScreen
+            vc.resultImage = finalImage
+            parentVC.present(vc, animated: true)
+        }
     }
     
     @objc func viewImageTapped() {
