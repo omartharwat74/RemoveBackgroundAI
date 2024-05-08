@@ -17,9 +17,13 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RemoveBackgroundView" customModuleProvider="target">
             <connections>
                 <outlet property="backButton" destination="VwY-71-iTD" id="pCT-Nn-MZy"/>
+                <outlet property="chooseThePicLabel" destination="WnU-IT-vhO" id="hzv-EC-D7E"/>
                 <outlet property="mainImage" destination="axy-2O-s8I" id="aQ2-Ql-3Xs"/>
                 <outlet property="removeBackGroundButton" destination="Zgx-xH-F94" id="2gc-ir-vFE"/>
+                <outlet property="titleLabel" destination="dAC-cK-A9a" id="eOU-xs-3iS"/>
+                <outlet property="uploadImageLabel" destination="Hem-L8-AYX" id="xNU-st-Mjp"/>
                 <outlet property="uploadImageStackView" destination="ZKA-ce-OOM" id="oBY-QI-SJP"/>
+                <outlet property="uploadPhotoLabel" destination="eFM-xn-Bsq" id="coV-eT-CZ2"/>
                 <outlet property="viewImage" destination="aUe-fI-YpU" id="E5E-cz-TTf"/>
             </connections>
         </placeholder>
