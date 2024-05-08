@@ -10,6 +10,21 @@ import UIKit
 class RemoveBackgroundView: UIView {
     
     //MARK: - Outlets
+    @IBOutlet weak var chooseThePicLabel: UILabel!{
+        didSet{
+            chooseThePicLabel.text = "Choose the picture".localized
+        }
+    }
+    @IBOutlet weak var titleLabel: UILabel!{
+        didSet{
+            titleLabel.text = "Remove Background".localized
+        }
+    }
+    @IBOutlet weak var uploadImageLabel: UILabel!{
+        didSet{
+            uploadImageLabel.text = "Upload an image".localized
+        }
+    }
     @IBOutlet weak var backButton: UIButton!{
         didSet{
             if Locale.current.language.languageCode!.identifier == "en" {
@@ -17,6 +32,11 @@ class RemoveBackgroundView: UIView {
             }else if Locale.current.language.languageCode!.identifier == "ar" {
                 backButton.setImage( UIImage(systemName: "arrow.lest"), for: .normal)
             }
+        }
+    }
+    @IBOutlet weak var uploadPhotoLabel: UILabel!{
+        didSet{
+            uploadPhotoLabel.text = "Upload a photo, and we will remove the background for you.".localized
         }
     }
     @IBOutlet weak var mainImage: UIImageView!
