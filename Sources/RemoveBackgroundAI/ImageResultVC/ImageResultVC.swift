@@ -47,6 +47,7 @@ class ImageResultVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //mainImage.image = resultImage
+        mainImage.image = SCImage(named: "Fiction")
         print("Result Image")
     }
     public init() {
