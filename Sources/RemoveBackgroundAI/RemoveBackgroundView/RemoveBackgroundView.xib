@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -20,6 +19,7 @@
                 <outlet property="chooseThePicLabel" destination="WnU-IT-vhO" id="hzv-EC-D7E"/>
                 <outlet property="mainImage" destination="axy-2O-s8I" id="aQ2-Ql-3Xs"/>
                 <outlet property="removeBackGroundButton" destination="Zgx-xH-F94" id="2gc-ir-vFE"/>
+                <outlet property="removeImageButton" destination="aPg-WK-g42" id="spK-Iy-bJj"/>
                 <outlet property="titleLabel" destination="dAC-cK-A9a" id="eOU-xs-3iS"/>
                 <outlet property="uploadImageLabel" destination="Hem-L8-AYX" id="xNU-st-Mjp"/>
                 <outlet property="uploadImageStackView" destination="ZKA-ce-OOM" id="oBY-QI-SJP"/>
@@ -105,6 +105,18 @@
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUe-fI-YpU">
                                             <rect key="frame" x="0.0" y="114" width="361" height="400"/>
                                             <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aPg-WK-g42">
+                                                    <rect key="frame" x="309" y="12" width="40" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="aPg-WK-g42" secondAttribute="height" multiplier="1:1" id="6uA-CK-0OB"/>
+                                                        <constraint firstAttribute="width" constant="40" id="eXu-jr-1bY"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" image="RemoveImage"/>
+                                                    <connections>
+                                                        <action selector="removeImageClick:" destination="-1" eventType="touchUpInside" id="IsQ-xi-ADF"/>
+                                                    </connections>
+                                                </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="axy-2O-s8I">
                                                     <rect key="frame" x="0.0" y="0.0" width="361" height="400"/>
                                                 </imageView>
@@ -135,6 +147,8 @@
                                             </subviews>
                                             <color key="backgroundColor" red="0.20784313725490194" green="0.2196078431372549" blue="0.24705882352941178" alpha="0.14999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="aPg-WK-g42" secondAttribute="trailing" constant="12" id="9XM-q9-Ehh"/>
+                                                <constraint firstItem="aPg-WK-g42" firstAttribute="top" secondItem="aUe-fI-YpU" secondAttribute="top" constant="12" id="FAd-pp-HLh"/>
                                                 <constraint firstAttribute="bottom" secondItem="axy-2O-s8I" secondAttribute="bottom" id="Jwk-K5-ume"/>
                                                 <constraint firstAttribute="trailing" secondItem="axy-2O-s8I" secondAttribute="trailing" id="LlT-KI-qau"/>
                                                 <constraint firstAttribute="height" constant="400" id="eaf-rW-YEf"/>
@@ -226,6 +240,7 @@
         </view>
     </objects>
     <resources>
+        <image name="RemoveImage" width="40" height="40"/>
         <image name="Upload" width="45" height="44"/>
         <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="image 12" width="16" height="17"/>

@@ -11,6 +11,7 @@ import AVFoundation
 class RemoveBackgroundView: UIView {
     
     //MARK: - Outlets
+    @IBOutlet weak var removeImageButton: UIButton!
     @IBOutlet weak var chooseThePicLabel: UILabel!{
         didSet{
             chooseThePicLabel.text = "Choose the picture".localized
@@ -69,7 +70,7 @@ class RemoveBackgroundView: UIView {
     }
     
     
-    var finalImage : UIImage?
+    var finalImage : UIImage? = nil
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -99,7 +100,7 @@ class RemoveBackgroundView: UIView {
         viewImage.addGestureRecognizer(tapGesture)
         viewImage.isUserInteractionEnabled = true
         setUpButton()
-        
+        removeImageButton.isHidden = true
     }
     
     func setUpButton(){
@@ -114,6 +115,10 @@ class RemoveBackgroundView: UIView {
     
     
     //MARK: - Actions
+    @IBAction func removeImageClick(_ sender: Any) {
+        finalImage = nil
+        mainImage.image = nil
+    }
     @IBAction func removeBackGroundClick(_ sender: Any) {
         
     }
@@ -217,7 +222,10 @@ extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationCon
             finalImage = originalImage
         }
         mainImage.image = finalImage
+        removeBackGroundButton.isEnabled = true
+        removeBackGroundButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
         uploadImageStackView.isHidden = true
+        removeImageButton.isHidden = false
         picker.dismiss(animated: true)
     }
     
@@ -226,70 +234,3 @@ extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationCon
         picker.dismiss(animated: true, completion: nil)
     }
 }
-
-//extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-//    
-//    public func openCamera() {
-//        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-//            print("Camera is not available.")
-//            return
-//        }
-//        
-//        // Check camera permission
-//        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
-//        
-//        switch cameraAuthorizationStatus {
-//        case .authorized:
-//            // Camera is authorized, proceed to open camera
-//            showCamera()
-//        case .notDetermined:
-//            // Request camera permission
-//            AVCaptureDevice.requestAccess(for: .video) { granted in
-//                if granted {
-//                    self.showCamera()
-//                } else {
-//                    print("Camera access denied.")
-//                }
-//            }
-//        case .denied, .restricted:
-//            // Camera access denied by user or restricted by parental controls
-//            print("Camera access denied.")
-//        @unknown default:
-//            print("Unknown camera authorization status.")
-//        }
-//    }
-//    
-//    public func showCamera() {
-//        DispatchQueue.main.async {
-//            let imagePicker = UIImagePickerController()
-//            imagePicker.delegate = self
-//            imagePicker.sourceType = .camera
-//            imagePicker.allowsEditing = true
-//            if let parentVC = self.parentViewController {
-//                parentVC.present(imagePicker, animated: true)
-//            } else {
-//                print("Parent view controller not found")
-//            }
-//        }
-//    }
-//    
-//    // MARK: - UIImagePickerControllerDelegate Methods
-//    
-//    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-//        // Get the captured image
-//        if let editedImage = info[.editedImage] as? UIImage {
-//            finalImage = editedImage
-//        } else if let originalImage = info[.originalImage] as? UIImage {
-//            // If edited image is not available, fall back to original image
-//            finalImage = originalImage
-//        }
-//        mainImage.image = finalImage
-//        uploadImageStackView.isHidden = true
-//        picker.dismiss(animated: true)
-//    }
-//    
-//    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-//        // Dismiss the image picker if the user cancels
-//        picker.dismiss(animated: true, completion: nil)
-//    }
-//}
