@@ -62,6 +62,8 @@ class RemoveBackgroundView: UIView {
     @IBOutlet weak var viewImage: UIView!{
         didSet{
             viewImage.layer.cornerRadius = 25
+            viewImage.layer.borderWidth = 1
+            viewImage.layer.borderColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1).cgColor
         }
     }
     
