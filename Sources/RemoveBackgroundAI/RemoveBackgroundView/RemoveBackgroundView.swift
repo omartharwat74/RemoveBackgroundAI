@@ -101,8 +101,8 @@ class RemoveBackgroundView: UIView {
     //MARK: - Setup
     func configuration(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewImageTapped))
-        viewImage.addGestureRecognizer(tapGesture)
-        viewImage.isUserInteractionEnabled = true
+        uploadImageStackView.addGestureRecognizer(tapGesture)
+        uploadImageStackView.isUserInteractionEnabled = true
         setUpButton()
         removeImageButton.isHidden = true
     }
@@ -132,7 +132,7 @@ class RemoveBackgroundView: UIView {
     }
     
     @objc func viewImageTapped() {
-        openCameraOrGallery()
+        openGallery()
     }
     
 }
