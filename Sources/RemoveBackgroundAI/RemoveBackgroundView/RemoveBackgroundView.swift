@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class RemoveBackgroundView: UIView {
     
@@ -52,9 +53,9 @@ class RemoveBackgroundView: UIView {
             }
             removeBackGroundButton.configuration?.imagePadding = 10
             if Locale.current.language.languageCode!.identifier == "en" {
-                removeBackGroundButton.semanticContentAttribute = .forceRightToLeft
-            }else if Locale.current.language.languageCode!.identifier == "ar" {
                 removeBackGroundButton.semanticContentAttribute = .forceLeftToRight
+            }else if Locale.current.language.languageCode!.identifier == "ar" {
+                removeBackGroundButton.semanticContentAttribute = .forceRightToLeft
             }
             
         }
@@ -118,7 +119,74 @@ class RemoveBackgroundView: UIView {
     }
     
     @objc func viewImageTapped() {
-        print("View image tapped!")
+        openCamera()
     }
     
+}
+
+extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    public func openCamera() {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("Camera is not available.")
+            return
+        }
+        
+        // Check camera permission
+        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
+        
+        switch cameraAuthorizationStatus {
+        case .authorized:
+            // Camera is authorized, proceed to open camera
+            showCamera()
+        case .notDetermined:
+            // Request camera permission
+            AVCaptureDevice.requestAccess(for: .video) { granted in
+                if granted {
+                    self.showCamera()
+                } else {
+                    print("Camera access denied.")
+                }
+            }
+        case .denied, .restricted:
+            // Camera access denied by user or restricted by parental controls
+            print("Camera access denied.")
+        @unknown default:
+            print("Unknown camera authorization status.")
+        }
+    }
+    
+    public func showCamera() {
+        DispatchQueue.main.async {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.sourceType = .camera
+            imagePicker.allowsEditing = true
+            if let parentVC = self.parentViewController {
+                parentVC.present(imagePicker, animated: true)
+            } else {
+                print("Parent view controller not found")
+            }
+        }
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate Methods
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        // Get the captured image
+        if let editedImage = info[.editedImage] as? UIImage {
+            finalImage = editedImage
+        } else if let originalImage = info[.originalImage] as? UIImage {
+            // If edited image is not available, fall back to original image
+            finalImage = originalImage
+        }
+        mainImage.image = finalImage
+        uploadImageStackView.isHidden = true
+        picker.dismiss(animated: true)
+    }
+    
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        // Dismiss the image picker if the user cancels
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
