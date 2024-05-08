@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  
+
+  Created by Omar Tharwat on 08/05/2024.
+  
+*/
+"Upload a photo, and we will remove the background for you." = "قم بتحميل صورة، وسنقوم بإزالة الخلفية لك.";
+"Remove Background" = "إزالة الخلفية";
+"Upload an image" = "قم بتحميل صورة";
+"Choose the picture" = "اختر الصورة";
+"Save all" = "حفظ الكل";
+"Retry the process" = "إعادة العملية";
