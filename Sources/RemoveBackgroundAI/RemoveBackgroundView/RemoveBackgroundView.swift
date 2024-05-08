@@ -101,8 +101,8 @@ class RemoveBackgroundView: UIView {
     //MARK: - Setup
     func configuration(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewImageTapped))
-        viewImage.addGestureRecognizer(tapGesture)
-        viewImage.isUserInteractionEnabled = true
+        uploadImageStackView.addGestureRecognizer(tapGesture)
+        uploadImageStackView.isUserInteractionEnabled = true
         setUpButton()
         removeImageButton.isHidden = true
     }
@@ -123,7 +123,6 @@ class RemoveBackgroundView: UIView {
         finalImage = nil
         mainImage.image = nil
         removeImageButton.isHidden = true
-        viewImage.isHidden = false
         uploadImageStackView.isHidden = false
         removeBackGroundButton.isEnabled = false
         removeBackGroundButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
@@ -167,7 +166,6 @@ extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationCon
         removeBackGroundButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
         uploadImageStackView.isHidden = true
         removeImageButton.isHidden = false
-        viewImage.isHidden = true
         picker.dismiss(animated: true)
     }
     
