@@ -101,8 +101,8 @@ class RemoveBackgroundView: UIView {
     //MARK: - Setup
     func configuration(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewImageTapped))
-        uploadImageStackView.addGestureRecognizer(tapGesture)
-        uploadImageStackView.isUserInteractionEnabled = true
+        viewImage.addGestureRecognizer(tapGesture)
+        viewImage.isUserInteractionEnabled = true
         setUpButton()
         removeImageButton.isHidden = true
     }
@@ -123,6 +123,7 @@ class RemoveBackgroundView: UIView {
         finalImage = nil
         mainImage.image = nil
         removeImageButton.isHidden = true
+        viewImage.isUserInteractionEnabled = true
         uploadImageStackView.isHidden = false
         removeBackGroundButton.isEnabled = false
         removeBackGroundButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
@@ -137,74 +138,6 @@ class RemoveBackgroundView: UIView {
     
 }
 extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    
-    public func openCameraOrGallery() {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let cameraAction = UIAlertAction(title: "Take Photo", style: .default) { _ in
-                self.openCamera()
-            }
-            alert.addAction(cameraAction)
-        }
-        
-        let photoLibraryAction = UIAlertAction(title: "Choose from Library", style: .default) { _ in
-            self.openGallery()
-        }
-        alert.addAction(photoLibraryAction)
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        
-        if let parentVC = self.parentViewController {
-            parentVC.present(alert, animated: true, completion: nil)
-        } else {
-            print("Parent view controller not found")
-        }
-    }
-    
-    public func openCamera() {
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            print("Camera is not available.")
-            return
-        }
-        
-        // Check camera permission
-        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
-        
-        switch cameraAuthorizationStatus {
-        case .authorized:
-            // Camera is authorized, proceed to open camera
-            showCamera()
-        case .notDetermined:
-            // Request camera permission
-            AVCaptureDevice.requestAccess(for: .video) { granted in
-                if granted {
-                    self.showCamera()
-                } else {
-                    print("Camera access denied.")
-                }
-            }
-        case .denied, .restricted:
-            // Camera access denied by user or restricted by parental controls
-            print("Camera access denied.")
-        @unknown default:
-            print("Unknown camera authorization status.")
-        }
-    }
-    public func showCamera() {
-        DispatchQueue.main.async {
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            imagePicker.sourceType = .camera
-            imagePicker.allowsEditing = true
-            if let parentVC = self.parentViewController {
-                parentVC.present(imagePicker, animated: true)
-            } else {
-                print("Parent view controller not found")
-            }
-        }
-    }
     
     public func openGallery() {
         let imagePicker = UIImagePickerController()
@@ -234,6 +167,7 @@ extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationCon
         removeBackGroundButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
         uploadImageStackView.isHidden = true
         removeImageButton.isHidden = false
+        viewImage.isUserInteractionEnabled = false
         picker.dismiss(animated: true)
     }
     
