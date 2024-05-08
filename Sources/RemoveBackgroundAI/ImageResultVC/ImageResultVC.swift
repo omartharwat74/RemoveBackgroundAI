@@ -47,7 +47,14 @@ class ImageResultVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //mainImage.image = resultImage
-        
+        print("Result Image")
+    }
+    public init() {
+        super.init(nibName: "ImageResultVC", bundle: Bundle.module)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     @IBAction func saveAllClick(_ sender: Any) {
