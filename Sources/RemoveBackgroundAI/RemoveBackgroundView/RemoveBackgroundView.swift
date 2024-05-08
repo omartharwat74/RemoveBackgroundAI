@@ -119,12 +119,36 @@ class RemoveBackgroundView: UIView {
     }
     
     @objc func viewImageTapped() {
-        openCamera()
+        openCameraOrGallery()
     }
     
 }
-
 extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    public func openCameraOrGallery() {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let cameraAction = UIAlertAction(title: "Take Photo", style: .default) { _ in
+                self.openCamera()
+            }
+            alert.addAction(cameraAction)
+        }
+        
+        let photoLibraryAction = UIAlertAction(title: "Choose from Library", style: .default) { _ in
+            self.openGallery()
+        }
+        alert.addAction(photoLibraryAction)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        if let parentVC = self.parentViewController {
+            parentVC.present(alert, animated: true, completion: nil)
+        } else {
+            print("Parent view controller not found")
+        }
+    }
     
     public func openCamera() {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
@@ -155,7 +179,6 @@ extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationCon
             print("Unknown camera authorization status.")
         }
     }
-    
     public func showCamera() {
         DispatchQueue.main.async {
             let imagePicker = UIImagePickerController()
@@ -167,6 +190,19 @@ extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationCon
             } else {
                 print("Parent view controller not found")
             }
+        }
+    }
+    
+    public func openGallery() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.allowsEditing = true
+        
+        if let parentVC = self.parentViewController {
+            parentVC.present(imagePicker, animated: true)
+        } else {
+            print("Parent view controller not found")
         }
     }
     
@@ -190,3 +226,70 @@ extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationCon
         picker.dismiss(animated: true, completion: nil)
     }
 }
+
+//extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//    
+//    public func openCamera() {
+//        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+//            print("Camera is not available.")
+//            return
+//        }
+//        
+//        // Check camera permission
+//        let cameraAuthorizationStatus = AVCaptureDevice.authorizationStatus(for: .video)
+//        
+//        switch cameraAuthorizationStatus {
+//        case .authorized:
+//            // Camera is authorized, proceed to open camera
+//            showCamera()
+//        case .notDetermined:
+//            // Request camera permission
+//            AVCaptureDevice.requestAccess(for: .video) { granted in
+//                if granted {
+//                    self.showCamera()
+//                } else {
+//                    print("Camera access denied.")
+//                }
+//            }
+//        case .denied, .restricted:
+//            // Camera access denied by user or restricted by parental controls
+//            print("Camera access denied.")
+//        @unknown default:
+//            print("Unknown camera authorization status.")
+//        }
+//    }
+//    
+//    public func showCamera() {
+//        DispatchQueue.main.async {
+//            let imagePicker = UIImagePickerController()
+//            imagePicker.delegate = self
+//            imagePicker.sourceType = .camera
+//            imagePicker.allowsEditing = true
+//            if let parentVC = self.parentViewController {
+//                parentVC.present(imagePicker, animated: true)
+//            } else {
+//                print("Parent view controller not found")
+//            }
+//        }
+//    }
+//    
+//    // MARK: - UIImagePickerControllerDelegate Methods
+//    
+//    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+//        // Get the captured image
+//        if let editedImage = info[.editedImage] as? UIImage {
+//            finalImage = editedImage
+//        } else if let originalImage = info[.originalImage] as? UIImage {
+//            // If edited image is not available, fall back to original image
+//            finalImage = originalImage
+//        }
+//        mainImage.image = finalImage
+//        uploadImageStackView.isHidden = true
+//        picker.dismiss(animated: true)
+//    }
+//    
+//    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        // Dismiss the image picker if the user cancels
+//        picker.dismiss(animated: true, completion: nil)
+//    }
+//}
