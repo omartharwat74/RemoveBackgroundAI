@@ -123,6 +123,7 @@ class RemoveBackgroundView: UIView {
         finalImage = nil
         mainImage.image = nil
         removeImageButton.isHidden = true
+        uploadImageStackView.isHidden = false
     }
     @IBAction func removeBackGroundClick(_ sender: Any) {
         
