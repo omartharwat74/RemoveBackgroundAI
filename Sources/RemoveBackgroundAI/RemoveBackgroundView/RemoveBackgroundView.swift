@@ -1,6 +1,6 @@
 //
 //  RemoveBackgroundView.swift
-//  
+//
 //
 //  Created by Omar Tharwat on 08/05/2024.
 //
@@ -68,16 +68,18 @@ class RemoveBackgroundView: UIView {
     }
     
     
+    var finalImage : UIImage?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
-        setUpButton()
+        configuration()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
-        setUpButton()
+        configuration()
     }
     
     private func commonInit() {
@@ -91,14 +93,32 @@ class RemoveBackgroundView: UIView {
     }
     
     //MARK: - Setup
-    func setUpButton(){
-        removeBackGroundButton.isEnabled = false
+    func configuration(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewImageTapped))
+        viewImage.addGestureRecognizer(tapGesture)
+        viewImage.isUserInteractionEnabled = true
+        setUpButton()
+        
     }
+    
+    func setUpButton(){
+        if finalImage == nil {
+            removeBackGroundButton.isEnabled = false
+            removeBackGroundButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
+        }else {
+            removeBackGroundButton.isEnabled = true
+            removeBackGroundButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
+        }
+    }
+    
     
     //MARK: - Actions
     @IBAction func removeBackGroundClick(_ sender: Any) {
         
     }
     
-
+    @objc func viewImageTapped() {
+        print("View image tapped!")
+    }
+    
 }
