@@ -19,6 +19,7 @@ let package = Package(
         .target(
             name: "RemoveBackgroundAI",
             resources: [
+                .copy("ImageResultVC.xib"),
                 .copy("RemoveBackgroundView.xib"),
                 .copy("Fonts/DINNextLTArabic-Bold-4.ttf"),
                 .copy("DINNextLTArabic-Medium-4.ttf"),
