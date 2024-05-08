@@ -125,6 +125,7 @@ class RemoveBackgroundView: UIView {
         removeImageButton.isHidden = true
         uploadImageStackView.isHidden = false
         removeBackGroundButton.isEnabled = false
+        removeBackGroundButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
     }
     @IBAction func removeBackGroundClick(_ sender: Any) {
         
