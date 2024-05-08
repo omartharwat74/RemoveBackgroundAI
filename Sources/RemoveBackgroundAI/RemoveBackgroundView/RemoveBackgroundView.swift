@@ -41,7 +41,11 @@ class RemoveBackgroundView: UIView {
             uploadPhotoLabel.text = "Upload a photo, and we will remove the background for you.".localized
         }
     }
-    @IBOutlet weak var mainImage: UIImageView!
+    @IBOutlet weak var mainImage: UIImageView!{
+        didSet{
+            mainImage.layer.cornerRadius = 25
+        }
+    }
     @IBOutlet weak var uploadImageStackView: UIStackView!
     @IBOutlet weak var removeBackGroundButton: UIButton!{
         didSet{
