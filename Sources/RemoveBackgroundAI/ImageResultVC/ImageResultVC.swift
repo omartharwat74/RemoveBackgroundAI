@@ -46,7 +46,7 @@ class ImageResultVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainImage.image = resultImage
+        //mainImage.image = resultImage
         
     }
 
