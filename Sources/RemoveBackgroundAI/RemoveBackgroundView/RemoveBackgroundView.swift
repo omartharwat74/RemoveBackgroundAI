@@ -106,6 +106,7 @@ class RemoveBackgroundView: UIView {
         setUpButton()
         removeImageButton.isHidden = true
         self.bringSubviewToFront(removeImageButton)
+        self.sendSubviewToBack(mainImage)
     }
     
     func setUpButton(){
