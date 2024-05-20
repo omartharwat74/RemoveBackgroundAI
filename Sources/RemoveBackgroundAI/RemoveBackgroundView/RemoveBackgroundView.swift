@@ -65,7 +65,7 @@ class RemoveBackgroundView: UIView {
             
         }
     }
-    @IBOutlet weak var viewImage: UIView!{
+    @IBOutlet weak var viewImage: RectangularDashedView!{
         didSet{
             viewImage.layer.cornerRadius = 25
             viewImage.layer.borderWidth = 1
@@ -95,7 +95,7 @@ class RemoveBackgroundView: UIView {
             addSubview(view)
             view.frame = bounds
             view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        }
+            /Users/omartharwat/Desktop/Gyoom/CreateTranslationAi/Sources/CreateTranslationAi/Extension/DashedBorder.swift       }
     }
     
     //MARK: - Setup
@@ -105,6 +105,7 @@ class RemoveBackgroundView: UIView {
         uploadImageStackView.isUserInteractionEnabled = true
         setUpButton()
         removeImageButton.isHidden = true
+        viewImage.showDashBorder()
     }
     
     func setUpButton(){
@@ -125,6 +126,7 @@ class RemoveBackgroundView: UIView {
         removeImageButton.isHidden = true
         uploadImageStackView.isHidden = false
         removeBackGroundButton.isEnabled = false
+        viewImage.showDashBorder()
         removeBackGroundButton.backgroundColor = UIColor(red: 0.166, green: 0.271, blue: 0.269, alpha: 1)
     }
     @IBAction func removeBackGroundClick(_ sender: Any) {
@@ -171,6 +173,7 @@ extension RemoveBackgroundView: UIImagePickerControllerDelegate, UINavigationCon
         removeBackGroundButton.backgroundColor = UIColor(red: 0.341, green: 0.584, blue: 0.58, alpha: 1)
         uploadImageStackView.isHidden = true
         removeImageButton.isHidden = false
+        viewImage.hideDashBorder()
         picker.dismiss(animated: true)
     }
     

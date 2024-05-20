@@ -103,7 +103,7 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUe-fI-YpU">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aUe-fI-YpU" customClass="RectangularDashedView" customModule="RemoveBackgroundAI">
                                             <rect key="frame" x="0.0" y="114" width="361" height="400"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="axy-2O-s8I">
