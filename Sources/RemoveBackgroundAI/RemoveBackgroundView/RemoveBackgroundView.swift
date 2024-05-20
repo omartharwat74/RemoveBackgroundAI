@@ -95,7 +95,7 @@ class RemoveBackgroundView: UIView {
             addSubview(view)
             view.frame = bounds
             view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            /Users/omartharwat/Desktop/Gyoom/CreateTranslationAi/Sources/CreateTranslationAi/Extension/DashedBorder.swift       }
+            }
     }
     
     //MARK: - Setup

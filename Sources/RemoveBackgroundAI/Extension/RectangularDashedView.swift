@@ -1,8 +1,8 @@
 //
 //  File.swift
+//  
 //
-//
-//  Created by Omar Tharwat on 14/05/2024.
+//  Created by Omar Tharwat on 20/05/2024.
 //
 
 import UIKit
@@ -38,3 +38,4 @@ class RectangularDashedView: UIView {
         dashBorder?.isHidden = false
     }
 }
+
